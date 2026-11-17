@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSIS-1A | Class Memories</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --blue: #087eae;
+    --dark-blue: #06466c;
+    --yellow: #ffdc55;
+    --cream: #fffbea;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--dark-blue);
+    background:
+    linear-gradient(rgba(255,248,220,.78),
+                    rgba(214,246,255,.86)),
+    url('images/spongebob-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.93);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 7%;
+    box-shadow: 0 4px 20px #06466c20;
+}
+
+.navbar h2 {
+    font-family: 'Fredoka', sans-serif;
+    color: var(--blue);
+    font-size: 26px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: 900;
+    transition: .3s;
+}
+
+.navbar a:hover {
+    color: #e5a500;
+}
+
+.hero {
+    min-height: 850px;
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.grade {
+    color: #e3a51d;
+    letter-spacing: 5px;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.hero h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(65px,12vw,125px);
+    font-weight: 700;
+    color: #087eae;
+    text-shadow: 3px 4px 0 white, 6px 8px 0 #ffdc5570;
+    margin: 10px 0;
+}
+
+.hero h3 {
+    font-family: 'Pacifico', cursive;
+    color: #ad762b;
+    font-size: 23px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin: 30px;
+    padding: 16px 35px;
+    background: linear-gradient(135deg,#f7c34e,#e99b29);
+    color: white;
+    border-radius: 50px;
+    letter-spacing: 3px;
+    font-weight: 900;
+    box-shadow: 0 8px 20px #d99b3240;
+}
+
+.scroll {
+    font-family: 'Pacifico';
+    color: #a57939;
+    margin-top: 20px;
+}
+
+.polaroids {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 45px;
+    padding: 15px;
+}
+
+.polaroid {
+    width: 230px;
+    padding: 12px 12px 25px;
+    background: white;
+    box-shadow: 0 12px 25px #244e5a35;
+    transition: .4s;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.polaroid:hover {
+    transform: translateY(-12px) rotate(0deg) scale(1.06);
+    box-shadow: 0 18px 35px #087eae40;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.polaroid p {
+    font-family: 'Pacifico';
+    margin-top: 12px;
+    color: #80643d;
+}
+
+.rotate-left { transform: rotate(-7deg); }
+.rotate-right { transform: rotate(7deg); }
+.center-photo { transform: rotate(-2deg); }
+
+.polaroid::before {
+    content: "📌";
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    z-index: 5;
+}
+
+.section {
+    padding: 85px 7%;
+}
+
+.section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #075779;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #ad853e;
+    font-family: 'Pacifico';
+    margin-bottom: 35px;
+    font-size: 16px;
+}
+
+.gallery-heading {
+    text-align: center;
+    font-family: 'Fredoka';
+    color: #075779;
+    font-size: 28px;
+    margin: 60px 0 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 35px;
+    margin-top: 40px;
+    padding: 15px 5px;
+}
+
+.photo-card {
+    position: relative;
+    background: white;
+    padding: 12px 12px 25px;
+    box-shadow: 0 12px 25px #244e5a35;
+    cursor: pointer;
+    transition: .4s ease;
+    border-radius: 5px;
+    transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(3n+2) {
+    transform: rotate(3deg);
+}
+
+.photo-card:nth-child(3n) {
+    transform: rotate(-4deg);
+}
+
+.photo-card::before {
+    content: "📌";
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    z-index: 5;
+}
+
+.photo-card:hover {
+    transform: translateY(-12px) rotate(0deg) scale(1.05);
+    box-shadow: 0 18px 35px #087eae40;
+    z-index: 5;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 0;
+    transition: .4s;
+    display: block;
+}
+
+.photo-card h3 {
+    font-family: 'Pacifico';
+    text-align: center;
+    margin-top: 15px;
+    color: #80643d;
+    font-size: 17px;
+    font-weight: 400;
+    min-height: 25px;
+}
+
+.videos-section {
+    background: rgba(255,238,191,.80);
+}
+
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.video-card {
+    position: relative;
+    background: white;
+    padding: 12px;
+    box-shadow: 0 8px 20px #00000015;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .35s;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px #087eae35;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 260px;
+    background: linear-gradient(135deg,#087eae,#153d68);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.08);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 75px;
+    height: 75px;
+    background: white;
+    color: #087eae;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 5px 20px #00000035;
+    transition: .3s;
+}
+
+.video-card:hover .play-button {
+    transform: translate(-50%,-50%) scale(1.15);
+    background: var(--yellow);
+}
+
+.video-card h3 {
+    font-family: 'Fredoka';
+    text-align: center;
+    padding: 17px;
+    font-size: 21px;
+    color: #765e3e;
+}
+
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: rgba(0,15,30,.94);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-modal.active {
+    display: flex;
+    animation: fadeIn .3s ease;
+}
+
+.video-modal-content {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    background: #101820;
+    border-radius: 15px;
+    padding: 12px;
+    box-shadow: 0 0 40px #087eae55;
+}
+
+.video-modal video {
+    width: 100%;
+    max-height: 75vh;
+    display: block;
+    border-radius: 10px;
+    background: black;
+}
+
+.video-modal h3 {
+    color: white;
+    font-family: 'Fredoka';
+    text-align: center;
+    padding: 15px;
+    font-size: 23px;
+}
+
+.video-close {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    font-family: Arial;
+    background: none;
+    border: none;
+}
+
+.adviser {
+    background: white;
+    padding: 30px;
+    margin: 30px 0;
+    border-left: 8px solid #e9ae53;
+    box-shadow: 0 8px 20px #00000012;
+    border-radius: 8px;
+}
+
+.adviser h3 {
+    font-family: 'Fredoka';
+    font-size: 26px;
+}
+
+.adviser p {
+    color: #c39a52;
+    font-family: 'Pacifico';
+}
+
+.student-heading {
+    font-family: 'Fredoka';
+    margin: 40px 0 20px;
+    font-size: 25px;
+}
+
+.strand {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Fredoka';
+}
+
+.student-count {
+    text-align: center;
+    color: #a57939;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.students {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.students div {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px #00000010;
+    border-radius: 8px;
+    transition: .3s;
+    font-weight: 800;
+}
+
+.students div:hover {
+    transform: scale(1.03);
+    background: #e4f8ff;
+    box-shadow: 0 8px 20px #087eae30;
+}
+
+.students span {
+    display: block;
+    color: #c59b50;
+    font-family: 'Pacifico';
+    font-size: 14px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1500;
+    inset: 0;
+    background: rgba(0,20,40,.94);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.lightbox.active {
+    display: flex;
+    animation: fadeIn .3s ease;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 10px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 40px #ffffff30;
+    animation: photoZoom .35s ease;
+}
+
+#lightbox-caption {
+    color: white;
+    font-family: 'Pacifico';
+    margin-top: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+#close {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    font-family: Arial;
+}
+
+footer {
+    text-align: center;
+    padding: 45px 20px;
+    background: #075779;
+    color: white;
+}
+
+footer h2 {
+    font-family: 'Fredoka';
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.bubble {
+    position: fixed;
+    bottom: -50px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ffffff90;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatUp 9s linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: .7; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes photoZoom {
+    from { transform: scale(.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media(max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navbar h2 { font-size: 23px; }
+
+    .navbar nav {
+        gap: 13px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar a { font-size: 12px; }
+
+    .hero {
+        min-height: 750px;
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+    }
+
+    .polaroid {
+        width: 145px;
+    }
+
+    .polaroid img {
+        height: 105px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2,1fr);
+        gap: 25px 18px;
+    }
+
+    .photo-card {
+        padding: 8px 8px 18px;
+    }
+
+    .photo-card img {
+        height: 150px;
+    }
+
+    .photo-card h3 {
+        font-size: 12px;
+    }
+
+    .video-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .video-thumbnail {
+        height: 200px;
+    }
+
+    .students {
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+
+    .students div {
+        padding: 13px;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .section h2 {
+        font-size: 30px;
+    }
+}
+
+@media(max-width:380px) {
+    .gallery {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 20px 12px;
+    }
+
+    .photo-card img {
+        height: 125px;
+    }
+
+    .photo-card h3 {
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2>🌊 BSIS-1A YES YES YOEW</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#photos">Photos</a>
+        <a href="#videos">Videos</a>
+        <a href="#people">Students</a>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <p class="grade">✦ FIRST YEAR COLLEGE ✦</p>
+    <h1>BSIS-1A</h1>
+    <h3>FIRST SEMESTER</h3>
+    <div class="hero-button">BSIS-1A PHOTOS</div>
+    <p class="scroll">Scroll through our memories ↓</p>
+
+    <div class="polaroids">
+        <div class="polaroid rotate-left">
+            <img src="pi5.jpeg" alt="Class Memory 1">
+            <p>pathfit champion</p>
+        </div>
+
+        <div class="polaroid rotate-right">
+            <img src="g6.jpeg" alt="Class Memory 2">
+            <p>role play champion</p>
+        </div>
+
+        <div class="polaroid center-photo">
+            <img src="g9.jpeg" alt="Class Memory 3">
+            <p>asus kala mo talaga may mga hiya eno</p>
+        </div>
+    </div>
+
+    <div class="polaroids">
+        <div class="polaroid rotate-left">
+            <img src="pi9.jpeg" alt="Class Memory 1">
+            <p>Mga mukhang.......</p>
+        </div>
+
+        <div class="polaroid rotate-right">
+            <img src="pi8.jpeg" alt="Class Memory 2">
+            <p>papitik muna ang mga basuraXkalikasan</p>
+        </div>
+
+        <div class="polaroid center-photo">
+            <img src="p5.jpeg" alt="Class Memory 3">
+            <p>pitik muna bago sugoddd</p>
+        </div>
+    </div>
+</section>
+
+<section id="photos" class="section">
+    <h2>Our Photo Gallery 📸</h2>
+    <p class="subtitle">Every picture tells a story ✨</p>
+
+    <h3 class="gallery-heading">🏫 Our Memories</h3>
+
+    <div class="polaroids">
+        <div class="polaroid rotate-left">
+            <img src="pic5.jpeg" alt="Classroom">
+            <p>Ma'am, ma'am parcel po</p>
+        </div>
+
+        <div class="polaroid rotate-right">
+            <img src="pic6.jpeg" alt="Class Moments">
+            <p>ang papel na sinayang, eyyy!</p>
+        </div>
+
+        <div class="polaroid center-photo">
+            <img src="pic7.jpeg" alt="BSIS-1A">
+            <p> pinitikan lang </p>
+        </div>
+    </div>
+
+    <div class="polaroids">
+        <div class="polaroid rotate-left">
+            <img src="pi10.jpeg" alt=".......">
+            <p> panirang ulan to eno </p>
+        </div>
+
+        <div class="polaroid rotate-right">
+            <img src="pi11.jpeg" alt="Class Moments">
+            <p> yung isa pacute, yung isa wayt lang  </p>
+        </div>
+
+        <div class="polaroid center-photo">
+            <img src="pi12.jpeg" alt="BSIS-1A">
+            <p> mayu muna daa maglaog sa buhay nya ta mararaut ang peace of mind nya.</p>
+        </div>
+    </div>
+
+    <h3 class="gallery-heading">💙 More Class Memories</h3>
+
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="pic8.jpeg" alt="mga pitik">
+            <h3>1% battery, 100% kalat. 😂</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="pic9.jpeg" alt="mga pitik">
+            <h3>Pitik muna .</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="pic10.jpeg" alt="......">
+            <h3> basang lang na pitik </h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="m7.jpeg" alt="........">
+            <h3>pag nakatikod mala marian rivera, pag humarap.... no comment</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="p6.jpeg" alt="..">
+            <h3> pov- may nalaman ka </h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="p4.jpeg" alt="....">
+            <h3>picture muna bago sumabak</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="p7.jpeg" alt=....>
+            <h3> justice!, justice!, justice para sa muka HAHAHAHAHA</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="p8.jpeg" alt="....">
+            <h3>justice sabi ni ate </h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="pic2.jpeg" alt="....">
+            <h3>nag picture ang mga galaw gaw</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="g1.gif" alt=".....">
+            <h3> battery "bleee"     
+                
+                -kalikasan nyo antok na       
+                
+                - plastic "🙂"          </h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="k2.jpeg" alt=".......">
+            <h3>may nakisaling ulo</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="kj8.jpeg" alt=" ...........">
+            <h3>hale-hale-yu-yahh</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="kk2.jpeg" alt=".....">
+            <h3>eyyy</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="m.jpeg" alt=".....">
+            <h3>opss opss, buti na pause</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="k.jpeg" alt=".. ">
+            <h3>ano sinisilip silip mo te?</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="k1.jpeg" alt="...">
+            <h3>ahh papa!!</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="k3.jpeg" alt="......">
+            <h3>low battery</h3>
+        </div>
+
+        <div class="photo-card">
+            <img src="p0.jpeg" alt=".......">
+            <h3>kala mo talaga hindi plastic </h3>
+        </div>
+
+    </div>
+</section>
+
+<section id="videos" class="section videos-section">
+    <h2>Video Reels 🎬</h2>
+    <p class="subtitle">Relive our unforgettable moments</p>
+
+    <div class="video-gallery">
+
+        <div class="video-card"
+             data-video="vid1.mp4"
+             data-title="Outfit Check">
+            <div class="video-thumbnail">
+                <img src="pic6.jpeg" alt="Outfit Check">
+                <div class="play-button">▶</div>
+            </div>
+            <h3>mamamong gengeng</h3>
+        </div>
+
+        <div class="video-card"
+             data-video="vid2.mp4"
+             data-title="inda, dae ko ni aram">
+            <div class="video-thumbnail">
+                <img src="pic6.jpeg" alt="....">
+                <div class="play-button">▶</div>
+            </div>
+            <h3>mamamong geng-geng </h3>
+        </div>
+
+        <div class="video-card"
+             data-video="vid3.mp4"
+             data-title="kutohan serye">
+            <div class="video-thumbnail">
+                <img src="pic6.jpeg" alt="Class Highlights">
+                <div class="play-button">▶</div>
+            </div>
+            <h3> mamamong geng-geng</h3>
+        </div>
+
+        <div class="video-card"
+             data-video="vid4.mp4"
+             data-title="pathfit">
+            <div class="video-thumbnail">
+                <img src="pic6.jpeg" alt="Class Highlights">
+                <div class="play-button">▶</div>
+            </div>
+            <h3> mamamomg geng-geng </h3>
+        </div>
+
+    </div>
+</section>
+
+<section id="people" class="section">
+
+    <h3 class="student-heading">Students - BSIS-1A</h3>
+
+    <h3 class="strand">
+        ✦ Bachelor of Science in Information Systems ✦
+    </h3>
+
+    <p class="student-count">24 Students | BSIS-1A</p>
+
+    <div class="students">
+        <div>Abainza, Shiela Mae Buendia<span>#001</span></div>
+        <div>Albante, Mae Hazel Frondez<span>#002</span></div>
+        <div>Canuel, Clarizza May Panganiban<span>#003</span></div>
+        <div>Clarianes, Elizabeth Uy<span>#004</span></div>
+        <div>Costales, Sunshine Dela Rosa<span>#005</span></div>
+        <div>Fermante, Lovely Cabas<span>#006</span></div>
+        <div>Frondoso, Hanz Geo Ramos<span>#007</span></div>
+        <div>Lopo, Bianca Abante<span>#008</span></div>
+        <div>Mallillin, Stephanie A.<span>#009</span></div>
+        <div>Manait, Gener L.<span>#010</span></div>
+        <div>Mason, Rhian Manansala<span>#011</span></div>
+        <div>Mayor, Jeffry Bacharo<span>#012</span></div>
+        <div>Mayor, Ricky Ramonel<span>#013</span></div>
+        <div>Morandarte, Rose Ann Robles<span>#014</span></div>
+        <div>Nebreja, Heart Moron<span>#015</span></div>
+        <div>Osido, Realyn Elocario<span>#016</span></div>
+        <div>Perwelo, Loren Jenn M.<span>#017</span></div>
+        <div>Piamonte, Arman Baldera<span>#018</span></div>
+        <div>Recaña, Ma. Crizzandra Luz<span>#019</span></div>
+        <div>Romero, Marven Candelaria<span>#020</span></div>
+        <div>Santillan, Paulo San Carlos<span>#021</span></div>
+        <div>Singah, Nicko Nuah Espina<span>#022</span></div>
+        <div>Timajo, Justin Valencia<span>#023</span></div>
+        <div>Hermenia Orenia V.<span>#024</span></div>
+    </div>
+</section>
+
+<footer>
+    <h2>🌊 BSIS-1A</h2>
+    <p>Different personalities, one family.</p>
+    <p>One section, countless memories.</p>
+    <p>© 2026 - 2027 | BSIS-1A Memories</p>
+</footer>
+
+<!-- PHOTO POPUP -->
+
+<div class="lightbox" id="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery Preview">
+    <p id="lightbox-caption"></p>
+</div>
+
+<!-- VIDEO POPUP -->
+
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-content">
+        <button class="video-close" id="videoClose">&times;</button>
+        <video id="popupVideo" controls playsinline></video>
+        <h3 id="videoTitle">Video</h3>
+    </div>
+</div>
+
+<script>
+
+// ALL PHOTO POPUPS
+
+const photos = document.querySelectorAll(
+    ".polaroid img, .photo-card img"
+);
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxCaption = document.getElementById("lightbox-caption");
+const close = document.getElementById("close");
+
+photos.forEach(photo => {
+    photo.addEventListener("click", () => {
+
+        lightboxImg.src = photo.src;
+
+        lightboxCaption.textContent =
+            photo.closest(".polaroid")?.querySelector("p")?.textContent ||
+            photo.closest(".photo-card")?.querySelector("h3")?.textContent ||
+            "";
+
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+function closePhoto() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    lightboxImg.src = "";
+}
+
+close.addEventListener("click", closePhoto);
+
+lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+        closePhoto();
+    }
+});
+
+// VIDEO POPUP
+
+const videoCards = document.querySelectorAll(".video-card");
+const videoModal = document.getElementById("videoModal");
+const popupVideo = document.getElementById("popupVideo");
+const videoTitle = document.getElementById("videoTitle");
+const videoClose = document.getElementById("videoClose");
+
+videoCards.forEach(card => {
+    card.addEventListener("click", () => {
+
+        popupVideo.src = card.dataset.video;
+        videoTitle.textContent = card.dataset.title;
+
+        videoModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        popupVideo.load();
+
+        popupVideo.play().catch(() => {});
+    });
+});
+
+function closeVideo() {
+    popupVideo.pause();
+    popupVideo.removeAttribute("src");
+    popupVideo.load();
+
+    videoModal.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+videoClose.addEventListener("click", closeVideo);
+
+videoModal.addEventListener("click", e => {
+    if (e.target === videoModal) {
+        closeVideo();
+    }
+});
+
+// ESCAPE KEY
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        closePhoto();
+        closeVideo();
+    }
+});
+
+// ANIMATED BUBBLES
+
+function createBubble() {
+    const bubble = document.createElement("div");
+
+    bubble.className = "bubble";
+    bubble.style.left = Math.random() * 100 + "vw";
+
+    bubble.style.width = bubble.style.height =
+        (Math.random() * 20 + 😎 + "px";
+
+    bubble.style.animationDuration =
+        (Math.random() * 5 + 6) + "s";
+
+    document.body.appendChild(bubble);
+
+    setTimeout(() => bubble.remove(), 11000);
+}
+
+setInterval(createBubble, 700);
+
+</script>
+
+</body>
+</html>
